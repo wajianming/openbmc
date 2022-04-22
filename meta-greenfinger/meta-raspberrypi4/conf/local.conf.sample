@@ -1,4 +1,4 @@
-MACHINE ??= "raspberrypi"
+MACHINE ??= "raspberrypi4"
 DISTRO ?= "openbmc-phosphor"
 PACKAGE_CLASSES ?= "package_ipk"
 SANITY_TESTED_DISTROS:append ?= " *"
@@ -15,6 +15,10 @@ BB_DISKMON_DIRS ??= "\
     HALT,${SSTATE_DIR},100M,1K \
     HALT,/tmp,10M,1K"
 CONF_VERSION = "2"
+
+# To generate image for sd-card.
+IMAGE_FSTYPES += " rpi-sdimg"
+FLASH_SIZE ?= "131072"
 
 # Set the root password to '0penBmc'
 # Defaults from meta-phosphor/conf/distro/include/phosphor-defaults.inc
